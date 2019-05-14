@@ -2,16 +2,16 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="83081" started-at="2019-05-14T09:53:00Z" finished-at="2019-05-14T09:54:23Z">
+  <suite name="Default suite" duration-ms="32469" started-at="2019-05-14T11:13:47Z" finished-at="2019-05-14T11:14:19Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="83081" started-at="2019-05-14T09:53:00Z" finished-at="2019-05-14T09:54:23Z">
-      <class name="extentreport.BluestoneScenario1">
-        <test-method status="PASS" signature="scenario1()[pri:0, instance:extentreport.BluestoneScenario1@224edc67]" name="scenario1" duration-ms="83033" started-at="2019-05-14T09:53:00Z" finished-at="2019-05-14T09:54:23Z">
+    <test name="Default test" duration-ms="32469" started-at="2019-05-14T11:13:47Z" finished-at="2019-05-14T11:14:19Z">
+      <class name="extentreport.BluestoneScenario3">
+        <test-method status="PASS" signature="scenario1()[pri:0, instance:extentreport.BluestoneScenario3@224edc67]" name="scenario1" duration-ms="32438" started-at="2019-05-14T11:13:47Z" finished-at="2019-05-14T11:14:19Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- scenario1 -->
-      </class> <!-- extentreport.BluestoneScenario1 -->
+      </class> <!-- extentreport.BluestoneScenario3 -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

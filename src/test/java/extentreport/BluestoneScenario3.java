@@ -5,37 +5,28 @@ import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
-import org.testng.reporters.Files;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
-import com.aventstack.extentreports.utils.FileUtil;
 
-public class BluestoneScenario1 {
-	String text,a[];
+public class BluestoneScenario3 {
 	@Test
-	public void scenario1() throws Exception
+	public void scenario1() throws Exception 
 	{
 		WebDriver driver = new FirefoxDriver();
 		
-		Actions act=new Actions(driver);
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-		
 		 // 1.Create an Object of ExtentHtmlReporter
-	    ExtentHtmlReporter htmlReporter=new ExtentHtmlReporter(new File("C:\\Users\\Rabi\\Documents\\BlueStoneExtentRepots\\regressionreport1.html"));
+	    ExtentHtmlReporter htmlReporter=new ExtentHtmlReporter(new File("C:\\Users\\Rabi\\Documents\\BlueStoneExtentRepots\\regressionreport3.html"));
 	    htmlReporter.config().setTheme(Theme.DARK);//3 statements for changing title,heading
 	    htmlReporter.config().setDocumentTitle("Test Yantra");
 	    htmlReporter.config().setReportName("Regression Test Suite1");
@@ -54,29 +45,24 @@ public class BluestoneScenario1 {
 		driver.get("https://bluestone.com");
 		test.log(Status.INFO, "Entered BlueStone page");
 		
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		Actions act=new Actions(driver);
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		driver.get("https://bluestone.com");
+		js.executeScript("window.scrollBy(0,4000)");
+		TakesScreenshot sc=(TakesScreenshot)driver;
+		File fsrc=sc.getScreenshotAs(OutputType.FILE);
+		File dsrc=new File("C:\\Users\\Rabi\\Documents\\BlueStoneExtentRepots\\Screenshot3.png");
+		FileUtils.copyFile(fsrc, dsrc);
 		
-		driver.findElement(By.xpath("//div[@class='container']/descendant::a[text()='Rings ']")).click();
-		act.moveToElement(driver.findElement(By.xpath("//div[@id='top-filter']/descendant::section[@id='Gold Purity-form']/child::span"))).perform();
-		WebElement e1=driver.findElement(By.xpath("//div[@id='top-filter']/descendant::section[@id='Gold Purity-form']/child::span/following-sibling::div/descendant::span[text()=' 22k ']"));
-		act.moveToElement(e1).perform();
-		
-		/*
-		 * // Sstem.out.println("count of 22k is "+a[1]); test.log(Status.INFO,
-		 * "Count of 22k gold purity is "+a[1]);
-		 */
-		 
-		   TakesScreenshot sc=(TakesScreenshot)driver;
-	    	File fsrc=sc.getScreenshotAs(OutputType.FILE);
-	    	File dsrc=new File("C:\\Users\\Rabi\\Documents\\BlueStoneExtentRepots\\Screenshot1.png");
-	        FileUtils.copyFile(fsrc,dsrc);
-	        test.log(Status.INFO,"getting count of gold purity(22k) ");
-	    	
 		//4.Attaching Screen Shot
-	       test.addScreenCaptureFromPath("C:\\Users\\Rabi\\Documents\\BlueStoneExtentRepots\\Screenshot1.png");
-	  
-	      //5.Write it the log details to the html file
+	       test.addScreenCaptureFromPath("C:\\Users\\Rabi\\Documents\\BlueStoneExtentRepots\\Screenshot3.png");
+	       test.log(Status.INFO, "doing the scrolling in Homepage");
+	     //5.Write it the log details to the html file
 	       driver.close();
 	       extent.flush();//to store everything in extent report
+
 	}
 
 }
